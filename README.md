@@ -1,5 +1,7 @@
 # 🐍 Snake-Water-Gun Game in C
 
+![License: CC BY-ND 4.0](https://img.shields.io/badge/License-CC%20BY--ND%204.0-lightgrey.svg)
+
 A simple, fun console-based Snake-Water-Gun game written in pure C language — with a twist of randomness and scoring system!  
 Built with ❤️ by **Rohit**.
 
