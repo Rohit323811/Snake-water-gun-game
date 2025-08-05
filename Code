@@ -1,0 +1,103 @@
+// © 2025 Rohit
+// Licensed under CC BY-ND 4.0
+// You may reuse this code as-is but DO NOT modify or redistribute modified versions.
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<time.h>
+void main()
+{
+    int s,i,score,n,n1, high;
+    char choice, choice1;
+    FILE *fp;
+    clrscr();
+    fp=fopen("game.txt","a");
+    srand(time(0));
+    printf("===================");
+    printf("\n Snake-Water-Game");
+    printf("\n===================");
+    choice='y';
+    i=1;
+    score=0;
+    while((choice=='y')||(choice=='Y'))
+    {
+        printf ("\n Round %d", i);
+        printf("\n Choose your move: \n 1. Snake\n 2.water\n 3. Gun\n Your choice: ");
+        scanf("%d",&n);
+        n1=(rand()%(3))+1;
+        if (n1==1)
+        {
+            printf("\n Computer choose Snake");
+            if (n==1)
+            {
+                printf("\n Draw!!! An Score=0");
+            }
+            else if (n==2)
+            {
+                printf("\n You Lose!!!!");
+            }
+            else
+            {
+                printf("\n You won't Score: +1");
+                score++;
+            }
+        }
+        if (n1==2)
+        {
+            printf ("\n Computer choose water");
+            if (n==1)
+            {
+
+                printf("\n You Won!!! \n Score:+1");
+                score++;
+            }
+            else if (n==2)
+            {
+                printf("\n Draw!!! \nScore=0");
+            }
+            else
+            {
+                printf("\n You Lose!!!!");
+            }
+        }
+        if (n1==3)
+        {
+            printf("\n Computer choose Gun");
+            if (n==1)
+            {
+                printf ("\n You Lose!!!!");
+            }
+
+            else if (n==2)
+            {
+                printf("\n You Win!!! Score:+1");
+                score++;
+            }
+            else
+            {
+                printf("n Draw!! Score:0");
+            }
+        }
+        printf ("Do you want to play one more round!! (Y/N): ");
+        scanf("%s", &choice);
+        i++;
+    }
+    printf ("Score: %d", score);
+    fprintf (fp, "%d\n", score);
+    fclose(fp);
+    fp=fopen("game.txt","r");
+    printf("Do you want to see High score(y/n): ");
+    scanf("%s", &choice1);
+    if ((choice1=='y')||(choice1=='Y'))
+    {
+        while(fscanf (fp,"%d", &s)!=EOF)
+        {
+            if (s>high)
+            {
+                high=s;
+            }
+        }
+        printf ("High score: %d", high);
+    }
+    getch();
+}
